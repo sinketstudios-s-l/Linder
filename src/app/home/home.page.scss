@@ -1,0 +1,46 @@
+
+ion-item {
+    --background: none;
+    --color: #ffffff;
+}
+
+.diamonds{
+    width: 24px;
+    height: 24px;
+}
+
+.diamondsCount{
+    margin-left: .5rem;
+    color: #ffffff;
+}
+
+ion-content{
+    --background: #ad5389;
+    --background: -webkit-linear-gradient(to top, #511670, #ad5389); 
+    --background: linear-gradient(to top, #511670, #ad5389); 
+    --color: #fff;
+}
+
+ion-header ion-toolbar{
+    --background: #ad5389;
+    --color: #fff;
+}
+
+ion-col.companionRow{
+    padding: 5px;
+}
+
+ion-card.companionCard{
+    margin: 0;
+    padding: 0;
+    --background: #fff !important;
+}
+
+svg.verificatedIcon{
+    fill: white;
+}
+
+.headers{
+    width: 100%;
+    padding-left: 10px;
+}

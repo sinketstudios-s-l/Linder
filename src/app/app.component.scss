@@ -1,0 +1,32 @@
+ion-menu ion-content{
+    --background: #CAB2EE;
+    --background: -webkit-linear-gradient(to top, #511670, #CAB2EE); 
+    --background: linear-gradient(to top, #511670, #CAB2EE); 
+    --color: #fff;
+    --overflow: hidden;
+}
+
+ion-menu ion-toolbar{
+    --background: #CAB2EE;
+    --color: #fff;
+}
+
+ion-list, ion-item{
+    --background: none;
+    background: none;
+    color: #fff;
+}
+
+
+.footerMenu{
+    background: #511670;
+    color: #ffffff49;
+    text-align: center;
+    padding: 5px;
+}
+.footerMenu .brandName{
+    font-weight: bold;
+}
+.footerMenu .appVersion{
+    font-size: 12px;
+}

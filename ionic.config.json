@@ -1,0 +1,7 @@
+{
+  "name": "Swipe",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

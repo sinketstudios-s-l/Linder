@@ -1,0 +1,44 @@
+<ion-header no-border mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon name="menu" mode="ios" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Thunder
+    </ion-title>
+    <!-- <ion-searchbar mode="ios" color="light"></ion-searchbar> -->
+    <ion-buttons slot="end" margin-end>
+      <ion-button mode="ios" (click)="diamondsPop()">
+        <svg slot="start" class="diamonds" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+          xml:space="preserve">
+          <polygon style="fill:#f0d4ff;" points="360.129,172.138 256,472.276 512,172.138 " />
+          <g>
+            <polygon style="fill:#e9c0ff;" points="105.931,39.724 0,172.138 151.871,172.138  " />
+            <polygon style="fill:#e9c0ff;" points="360.129,172.138 512,172.138 406.069,39.724  " />
+            <polygon style="fill:#e9c0ff;" points="360.129,172.138 256,39.724 151.871,172.138  " />
+          </g>
+          <polygon style="fill:#da9ff9;" points="256,39.724 105.931,39.724 151.871,172.138 " />
+          <polygon style="fill:#f0d4ff;" points="406.069,39.724 256,39.724 360.129,172.138 " />
+          <polygon style="fill:#da9ff9;" points="151.871,172.138 256,472.276 360.129,172.138 " />
+          <polygon style="fill:#c88de7;" points="0,172.138 256,472.276 151.871,172.138 " />
+        </svg>
+        <ion-label class="diamondsCount" slot="start">{{ diamonds }}</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="headers">
+      <h4 *ngIf="userRole == 'companied'">Acompañantes</h4>
+      <h4 *ngIf="userRole == 'companion'">Personas que buscan compañía.</h4>
+    </div>
+    <ion-grid>
+      <ion-row id="rowList">
+        <!-- companion cards -->
+      </ion-row>
+    </ion-grid>
+</ion-content>

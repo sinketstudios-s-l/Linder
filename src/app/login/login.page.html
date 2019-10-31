@@ -1,0 +1,194 @@
+<ion-content>
+
+
+
+  <ng-container>
+
+
+
+
+    <div class="formBuilder" id="regContainer">
+
+      {{token}}
+
+      <ion-slides #signupSlider [options]="slideOpts">
+
+        <ion-slide>
+          <div class="headers">
+            <span>¡Bienvenida <b>Linder</b>!</span><br>
+            <span>¿Cómo te llamas?</span>
+          </div>
+
+          <form [formGroup]="nameForm" class="loginForm">
+            <ion-item lines="none">
+              <ion-input formControlName="name" text-capitalize type="text" placeholder="Nombre">
+              </ion-input>
+            </ion-item>
+
+            <ion-button class="btn" (click)="next()" [disabled]="!nameForm.valid">Siguiente</ion-button>
+
+          </form>
+        </ion-slide>
+
+        <ion-slide>
+          <div class="headers">
+            <span>Encantado <b style="text-transform: capitalize;">{{nombre}}</b>,</span><br>
+            <span>¿Cuándo Naciste?</span>
+          </div>
+
+          <form [formGroup]="dateForm" class="dateForm">
+            <ion-item lines="none">
+              <ion-datetime mode="ios" color="dark" formControlName="date" value="1990" [max]="dateLimit"
+                displayFormat="DD / MMM / YYYY"
+                monthShortNames="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic" class="bornDate"
+                (ionChange)="dateAge()">
+              </ion-datetime>
+            </ion-item>
+
+            <ion-button class="btn btnPrev" (click)="prev()">
+              <ion-icon slot="start" name="arrow-back"></ion-icon>
+              Atrás
+            </ion-button>
+            <ion-button class="btn btnNext" (click)="next()" [disabled]="!dateForm.valid">
+              Siguiente
+              <ion-icon slot="end" name="arrow-forward"></ion-icon>
+            </ion-button>
+
+          </form>
+
+        </ion-slide>
+
+        <ion-slide>
+          <div class="headers">
+            <span>Me interesa...</span><br>
+            <span></span>
+          </div>
+
+          <ion-button class="btn genderBtn" (click)="interest($event)" id="relationship">
+            <ion-label slot="start">Una relación</ion-label>
+          </ion-button>
+
+          <ion-button class="btn genderBtn" (click)="interest($event)" id="havefun">
+            <ion-label slot="start">¡Pasarmelo bien!</ion-label>
+          </ion-button>
+
+          <ion-button class="btn genderBtn" (click)="interest($event)" id="meeting">
+            <ion-label slot="start">Conocer gente nueva</ion-label>
+          </ion-button>
+
+          <ion-button class="btn genderBtn" (click)="interest($event)" id="wellsee">
+            <ion-label slot="start">¡Ya veremos!</ion-label>
+          </ion-button>
+
+
+
+          <ion-button class="btn" (click)="prev()">
+            <ion-icon slot="start" name="arrow-back"></ion-icon>
+            Atrás
+          </ion-button>
+
+
+        </ion-slide>
+
+        <ion-slide>
+          <div class="headers">
+            <span>Cuéntanos algo sobre ti:</span><br>
+            <span></span>
+          </div>
+          <form [formGroup]="aboutForm">
+            <ion-textarea (ionChange)="wordsCount($event)" formControlName="desc" rows="6" cols="20"
+              placeholder="Aficiones, gustos, detalles.."></ion-textarea>
+            <ion-label>
+              <p style="color: #fff;opacity: .35;">{{descL}}/250</p>
+            </ion-label>
+          </form>
+          <ion-button class="btn btnPrev" (click)="prev()">
+            <ion-icon slot="start" name="arrow-back"></ion-icon>
+            Atrás
+          </ion-button>
+
+          <ion-button class="btn btnNext" (click)="next()" [disabled]="!aboutForm.valid">
+            Siguiente
+            <ion-icon slot="end" name="arrow-forward"></ion-icon>
+          </ion-button>
+
+
+        </ion-slide>
+
+        <ion-slide>
+          <ion-spinner *ngIf="loading == 1" name="crescent"></ion-spinner>
+
+          <div class="headers">
+            <span><b style="text-transform: capitalize;">{{nombre}}</b>, ¡Ya casi estamos!</span><br>
+            <span>Sólo queda un paso</span>
+          </div>
+
+          <form [formGroup]="regForm" class="loginForm">
+            <ion-item lines="none">
+              <ion-input formControlName="email" type="text" placeholder="Correo Electrónico">
+              </ion-input>
+            </ion-item>
+
+            <ion-item lines="none" style="margin-top: 1rem">
+              <ion-input formControlName="passwd" type="password" placeholder="Contraseña">
+              </ion-input>
+            </ion-item>
+
+
+            <ion-button class="btn btnPrev" (click)="prev()">
+              <ion-icon slot="start" name="arrow-back"></ion-icon>
+              Atrás
+            </ion-button>
+
+            <ion-button class="btn btnNext" (click)="signup()" [disabled]="!regForm.valid">Finalizar</ion-button>
+          </form>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </ng-container>
+
+
+  <ng-container *ngIf="loginF == 1">
+
+    <div class="loginFormContent">
+
+
+      <form [formGroup]="loginForm" class="formContent">
+
+        <ion-spinner *ngIf="loading == 1" name="crescent"></ion-spinner>
+
+        <div class="headers">
+          <span>Entra en tu cuenta de <b>Linder</b></span>
+        </div>
+
+        
+
+        <ion-item lines="none" style="margin-top: .5rem">
+          <ion-input formControlName="email" type="text" placeholder="Correo Electrónico">
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="none" style="margin-top: 1rem">
+          <ion-input formControlName="passwd" type="password" placeholder="Contraseña">
+          </ion-input>
+        </ion-item>
+
+        <ion-button class="btn" (click)="signin()" [disabled]="!loginForm.valid" (click)="signin()">Iniciar Sesión
+        </ion-button>
+
+      </form>
+
+
+
+    </div>
+
+  </ng-container>
+
+  <div class="logFooter">
+    <ion-label (click)="logForm()" *ngIf="loginF != 1">¿Ya tienes cuenta? <b class="logTxt">Inicia Sesión.</b>
+    </ion-label>
+    <ion-label (click)="regisForm()" *ngIf="loginF == 1">¿Todavía no tienes cuenta? <b class="logTxt">Regístrate.</b>
+    </ion-label>
+  </div>
+
+</ion-content>
